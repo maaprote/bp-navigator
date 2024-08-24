@@ -1,10 +1,8 @@
 # Be Productive Navigator
 
-This plugin is intended to be a helper in your WordPress website development workflow. It allows navigating to admin pages more fastly. 
-
 ###  Description
 
-desc
+This plugin is intended to be a helper in your WordPress website development workflow. It allows navigating to admin pages more fastly. 
 
 ### Installation
 
