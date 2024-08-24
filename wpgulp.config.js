@@ -1,0 +1,136 @@
+/**
+ * WPGulp Configuration File
+ *
+ * 1. Edit the variables as per your project requirements.
+ * 2. In paths you can add <<glob or array of globs>>.
+ *
+ * @package WPGulp
+ */
+
+// General options.
+const projectURL      = 'http://localhost/bp-navigator';
+const productURL      = './';
+const browserAutoOpen = false;
+const injectChanges   = true;
+const outputStyle     = 'compressed';
+const errLogToConsole = true;
+const precision       = 10;
+
+// Styles to process.
+const styles = [
+	{
+		name: 'app',
+		src: './assets/sass/app.scss',
+		destination: './assets/css/',
+		file: 'app'
+	},
+];
+
+// Watch options.
+const watchStyles  = './assets/sass/**/*.scss';
+const watchScripts = './assets/js/src/**/*.js';
+const watchPhp     = './**/*.php';
+
+// Zip options.
+const zipName = 'tmw-whatschat.zip';
+const zipDestination = './../';
+const zipIncludeGlob = ['../@(tmw-whatschat)/**/*'];
+const zipIgnoreGlob = [
+	'!**/*{node_modules,node_modules/**/*}',
+	'!**/*.git',
+	'!**/*.svn',
+	'!**/*.code-workspace',
+	'!**/*phpcs.xml',
+	'!**/*gulpfile.babel.js',
+	'!**/*wpgulp.config.js',
+	'!**/*.eslintrc.js',
+	'!**/*.eslintignore',
+	'!**/*.editorconfig',
+	'!**/*phpcs.xml.dist',
+	'!**/*vscode',
+	'!**/*package.json',
+	'!**/*package-lock.json',
+	'!**/*assets/img/raw/**/*',
+	'!**/*assets/img/raw',
+	'!**/*assets/js/src/**/*',
+	'!**/*assets/js/src',
+	'!**/*assets/sass/',
+	'!**/*assets/sass/**/*',
+	'!**/*composer.json',
+	'!**/*composer.lock',
+	'!**/*phpcs.xml',
+	'!{vendor/bin,vendor/bin/**/*}',
+	'!{vendor/dealerdirect,vendor/dealerdirect/**/*}',
+	'!{vendor/phpcompatibility,vendor/phpcompatibility/**/*}',
+	'!{vendor/phpcsstandards,vendor/phpcsstandards/**/*}',
+	'!{vendor/squizlabs,vendor/squizlabs/**/*}',
+	'!{vendor/wp-coding-standards,vendor/wp-coding-standards/**/*}',
+	'!**/*.map',
+	'!**/*tests/**/*',
+	'!**/*tests',
+	'!**/*e2etests/**/*',
+	'!**/*e2etests',
+	'!**/*playwright-report/**/*',
+	'!**/*playwright-report',
+	'!**/*test-results/**/*',
+	'!**/*test-results',
+	'!**/*playwright.config.js',
+	'!{Design,Design/**/*}',
+	'!{Documentation,Documentation/**/*}',
+	'!**/*readme.md',
+];
+
+// Translation options.
+const textDomain = 'bp-navigator';
+const translationFile = 'bp-navigator.pot';
+const translationDestination = './languages';
+
+// Others.
+const packageName = 'bp-navigator';
+const bugReport = 'https://github.com/maaprote/';
+const lastTranslator = 'Rodrigo Teixeira';
+const team = 'Rodrigo Teixeira';
+const BROWSERS_LIST = ['last 2 version', '> 1%'];
+
+// Export.
+module.exports = {
+
+	// General options.
+	projectURL,
+	productURL,
+	browserAutoOpen,
+	injectChanges,
+	outputStyle,
+	errLogToConsole,
+	precision,
+
+	// Style options.
+	styles,
+
+	// Script options.
+	// scripts,
+
+	// Watch options.
+	watchStyles,
+	watchScripts,
+	watchPhp,
+
+	// Zip options.
+	zipName,
+	zipDestination,
+	zipIncludeGlob,
+	zipIgnoreGlob,
+
+	// Translation options.
+	textDomain,
+	translationFile,
+	translationDestination,
+
+	// Others.
+	packageName,
+	bugReport,
+	lastTranslator,
+	team,
+	BROWSERS_LIST,
+
+};
