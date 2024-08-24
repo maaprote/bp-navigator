@@ -1,4 +1,4 @@
-# Be Productive Navigator
+# Be Productive - Navigator
 
 ###  Description
 
