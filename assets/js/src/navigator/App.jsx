@@ -114,6 +114,7 @@ export function App() {
                             > div {
                                 margin: 0;
                             }
+                                
                         `}
                         value={ comboBoxValue }
                         onChange={ comboBoxOnChangeHandler }
