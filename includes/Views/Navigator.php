@@ -42,6 +42,9 @@ class Navigator {
 		wp_enqueue_style( 'wp-components' );
 		wp_enqueue_script( 'bp-navigator-app', BP_NAVIGATOR_URL . 'assets/js/navigator/index-build.js', $asset_file['dependencies'], $asset_file['version'], true );
         wp_localize_script( 'bp-navigator-app', 'beProductiveNavigator', array(
+            'adminUrl' => admin_url(),
+            'restUrl' => get_rest_url(),
+            'nonce' => wp_create_nonce( 'bp-wp-rest-sec' ),
             'shortcutsOptionsList' => Utils::get_shortcuts_options_list(),
         ) );
     }

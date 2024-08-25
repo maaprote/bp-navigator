@@ -44,11 +44,12 @@
     "zip": "gulp zip",
     "translate": "gulp translate",
     "cache-clear": "gulp clearCache",
-    "production": "gulp production",
-    "start-navigator-app": "wp-scripts start",
-    "build-navigator-app": "wp-scripts build"
+    "production": "gulp production && wp-scripts build",
+    "start-wp-scripts": "wp-scripts start",
+    "build-wp-scripts": "wp-scripts build"
   },
   "dependencies": {
-    "install": "^0.13.0"
+    "install": "^0.13.0",
+    "react-select": "^5.8.0"
   }
 }

@@ -47,13 +47,38 @@ class Utils {
         );
 
         $shortcuts[] = array(
+            'label' => __( 'Admin: Edit post', 'bp-navigator' ),
+            'value' => 'edit:post',
+        );
+
+        $shortcuts[] = array(
             'label' => __( 'Admin: Categories', 'bp-navigator' ),
             'value' => add_query_arg( array( 'taxonomy' => 'category' ), admin_url( 'edit-tags.php' ) ),
         );
 
         $shortcuts[] = array(
+            'label' => __( 'Admin: Add new category', 'bp-navigator' ),
+            'value' => add_query_arg( array( 'taxonomy' => 'category' ), admin_url( 'edit-tags.php' ) ),
+        );
+
+        $shortcuts[] = array(
+            'label' => __( 'Admin: Edit category', 'bp-navigator' ),
+            'value' => 'edit:category',
+        );
+
+        $shortcuts[] = array(
             'label' => __( 'Admin: Tags', 'bp-navigator' ),
             'value' => add_query_arg( array( 'taxonomy' => 'post_tag' ), admin_url( 'edit-tags.php' ) ),
+        );
+
+        $shortcuts[] = array(
+            'label' => __( 'Admin: Add new tag', 'bp-navigator' ),
+            'value' => add_query_arg( array( 'taxonomy' => 'post_tag' ), admin_url( 'edit-tags.php' ) ),
+        );
+
+        $shortcuts[] = array(
+            'label' => __( 'Admin: Edit tag', 'bp-navigator' ),
+            'value' => 'edit:tag',
         );
 
         $shortcuts[] = array(
@@ -72,8 +97,13 @@ class Utils {
         );
 
         $shortcuts[] = array(
-            'label' => __( 'Admin: All pages', 'bp-navigator' ),
+            'label' => __( 'Admin: Add new page', 'bp-navigator' ),
             'value' => add_query_arg( array( 'post_type' => 'page' ), admin_url( 'post-new.php' ) ),
+        );
+
+        $shortcuts[] = array(
+            'label' => __( 'Admin: Edit page', 'bp-navigator' ),
+            'value' => 'edit:page',
         );
 
         $shortcuts[] = array(
@@ -93,7 +123,7 @@ class Utils {
 
         $shortcuts[] = array(
             'label' => __( 'Admin: Appearance → Customize', 'bp-navigator' ),
-            'value' => admin_url( 'site-editor.php' ), // TODO: Add compatibility with the 'return' parameter.
+            'value' => admin_url( 'customize.php' ), // TODO: Add compatibility with the 'return' parameter.
         );
 
         $shortcuts[] = array(
@@ -104,6 +134,11 @@ class Utils {
         $shortcuts[] = array(
             'label' => __( 'Admin: Appearance → Menus', 'bp-navigator' ),
             'value' => admin_url( 'nav-menus.php' ),
+        );
+
+        $shortcuts[] = array(
+            'label' => __( 'Admin: Edit menu', 'bp-navigator' ),
+            'value' => 'edit:menu',
         );
 
         $shortcuts[] = array(
@@ -144,6 +179,11 @@ class Utils {
         $shortcuts[] = array(
             'label' => __( 'Admin: Users → Add new user', 'bp-navigator' ),
             'value' => admin_url( 'user-new.php' ),
+        );
+
+        $shortcuts[] = array(
+            'label' => __( 'Admin: Edit user', 'bp-navigator' ),
+            'value' => 'edit:user',
         );
 
         $shortcuts[] = array(
@@ -266,6 +306,11 @@ class Utils {
             $shortcuts[] = array(
                 'label' => __( 'Admin: WooCommerce → Add new product', 'bp-navigator' ),
                 'value' => add_query_arg( array( 'post_type' => 'product' ), admin_url( 'post-new.php' ) ),
+            );
+
+            $shortcuts[] = array(
+                'label' => __( 'Admin: WooCommerce → Edit product', 'bp-navigator' ),
+                'value' => 'edit:product',
             );
 
             $shortcuts[] = array(

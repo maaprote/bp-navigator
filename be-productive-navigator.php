@@ -27,6 +27,7 @@ define( 'BP_NAVIGATOR_PATH', plugin_dir_path( __FILE__ ) );
 
 use Be_Productive\Views\Navigator;
 use Be_Productive\Utils\Utils;
+use Be_Productive\Rest\NavMenu as RestNavMenu;
 
 class BP_Navigator {
 
@@ -39,6 +40,9 @@ class BP_Navigator {
 
         // Textdomain.
         add_action( 'init', array( $this, 'load_textdomain' ) );
+
+        // Rest.
+        new RestNavMenu();
 
         // Render the Navigator.
         new Navigator();
