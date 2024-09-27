@@ -216,13 +216,13 @@ export function App() {
             const fetchProducts = async () => {
                 try {
                     const response = await apiFetch( {
-                        path: 'wp/v2/products?per_page=100',
+                        path: 'bp-navigator/v1/products',
                         method: 'GET',
                     } );
 
                     const products = response.map( product => {
                         return {
-                            label: product.title.rendered,
+                            label: product.name,
                             value: `${beProductiveNavigator.adminUrl}post.php?post=${product.id}&action=edit`,
                         }
                     });
@@ -236,6 +236,159 @@ export function App() {
             fetchProducts();
             
             return false;
+        }
+
+        // Edit product category.
+        if ( value === 'edit:product-category' ) {
+            setComboBoxOptions([]);
+            setSearchInputPlaceholder( __( 'Enter the product category name', 'bp-navigator' ) );
+
+            const fetchProductCats = async () => {
+                try {
+                    const response = await apiFetch( {
+                        path: 'bp-navigator/v1/product-categories',
+                        method: 'GET',
+                    } );
+
+                    const cats = response.map( cat => {
+                        return {
+                            label: cat.name,
+                            value: `${beProductiveNavigator.adminUrl}term.php?taxonomy=product_cat&tag_ID=${cat.id}&post_type=product`,
+                        }
+                    });
+
+                    setComboBoxOptions( cats );
+                } catch (error) {
+                    console.error( error );
+                }    
+            }
+    
+            fetchProductCats();
+            
+            return false;
+        }
+
+        // Edit product tag.
+        if ( value === 'edit:product-tag' ) {
+            setComboBoxOptions([]);
+            setSearchInputPlaceholder( __( 'Enter the product tag name', 'bp-navigator' ) );
+
+            const fetchProductTags = async () => {
+                try {
+                    const response = await apiFetch( {
+                        path: 'bp-navigator/v1/product-tags',
+                        method: 'GET',
+                    } );
+
+                    const tags = response.map( tag => {
+                        return {
+                            label: tag.name,
+                            value: `${beProductiveNavigator.adminUrl}term.php?taxonomy=product_tag&tag_ID=${tag.id}&post_type=product`,
+                        }
+                    });
+
+                    setComboBoxOptions( tags );
+                } catch (error) {
+                    console.error( error );
+                }    
+            }
+    
+            fetchProductTags();
+            
+            return false;
+        }
+
+        // Edit product attributes.
+        if ( value === 'edit:product-attribute' ) {
+            setComboBoxOptions([]);
+            setSearchInputPlaceholder( __( 'Enter the product attribute name', 'bp-navigator' ) );
+
+            const fetchProductAttributes = async () => {
+                try {
+                    const response = await apiFetch( {
+                        path: 'bp-navigator/v1/product-attributes',
+                        method: 'GET',
+                    } );
+
+                    const attributes = response.map( attribute => {
+                        return {
+                            label: attribute.name,
+                            value: `${beProductiveNavigator.adminUrl}edit.php?post_type=product&page=product_attributes&edit=${attribute.id}`,
+                        }
+                    });
+
+                    setComboBoxOptions( attributes );
+                } catch (error) {
+                    console.error( error );
+                }    
+            }
+    
+            fetchProductAttributes();
+            
+            return false;
+        }
+
+        // Add product attribute term.
+        if ( value === 'add:product-attribute-term' ) {
+            setComboBoxOptions([]);
+            setSearchInputPlaceholder( __( 'Enter the attribute name', 'bp-navigator' ) );
+
+            const fetchProductAttributes = async () => {
+                try {
+                    const response = await apiFetch( {
+                        path: 'bp-navigator/v1/product-attributes',
+                        method: 'GET',
+                    } );
+
+                    const attributes = response.map( attribute => {
+                        return {
+                            label: attribute.name,
+                            value: `${beProductiveNavigator.adminUrl}edit-tags.php?taxonomy=pa_${attribute.slug}&post_type=product`,
+                        }
+                    });
+
+                    setComboBoxOptions( attributes );
+                } catch (error) {
+                    console.error( error );
+                }    
+            }
+    
+            fetchProductAttributes();
+            
+            return false;
+        }
+
+        // Edit product attribute term.
+        // This one needs a two step implementation.
+        // First is the attribute selection, entered by the user. This will return the attribute ID.
+        // Second is the term selection, which will show the results from the attribute ID and then, the user will enter the term name.
+        if ( value === 'edit:product-attribute-term' ) {
+            // setComboBoxOptions([]);
+            // setSearchInputPlaceholder( __( 'Enter the term name', 'bp-navigator' ) );
+
+            // const fetchProductAttributeTerm = async () => {
+            //     try {
+            //         const response = await apiFetch( {
+            //             path: 'bp-navigator/v1/product-attribute-term',
+            //             method: 'GET',
+            //         } );
+
+            //         const term = response.map( t => {
+            //             return {
+            //                 label: t.name,
+            //                 value: `${beProductiveNavigator.adminUrl}term.php?taxonomy=pa_${t.taxonomy}&tag_IDs=${t.id}&post_type=product`,
+            //             }
+            //         });
+
+            //         setComboBoxOptions( term );
+            //     } catch (error) {
+            //         console.error( error );
+            //     }    
+            // }
+    
+            // fetchProductAttributeTerm();
+            
+            // return false;
         }
 
         // Edit menu.
@@ -303,6 +456,14 @@ export function App() {
         closeModal();
     }
 
+    const filterOption = (option, inputValue) => {
+        // Split input by spaces to handle multiple words
+        const inputWords = inputValue.toLowerCase().split(' ').filter(Boolean);
+      
+        // Check if all input words are included in the option label
+        return inputWords.every(word => option.label.toLowerCase().includes(word));
+    };
+
     return(
         <>
             { isOpen && (
@@ -351,14 +512,9 @@ export function App() {
                         onChange={ selectOnChangeHandler }
                         options={ selectOptions }
                         onInputChange={ ( inputValue, actionMeta ) => {
-                            // if ( ! inputValue ) {
-                            //     setComboBoxOptions([]);
-                            // } else {
-                            //     setComboBoxOptions( beProductiveNavigator.shortcutsOptionsList);
-                            // }
-
                             setSelectValue( inputValue );
                         } }
+                        filterOption={filterOption}
                     />
                 </Modal>
             ) }

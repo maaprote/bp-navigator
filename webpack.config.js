@@ -13,4 +13,16 @@ module.exports = [
 			path: __dirname + '/assets/js/navigator',
 		}
 	},
+	{
+		...defaultConfig,
+		entry: {
+			...defaultConfig.entry(),
+			admin: './assets/js/src/admin/settings/index.jsx',
+		},
+		output: {
+			...defaultConfig.output,
+			filename: 'settings-build.js',
+			path: __dirname + '/assets/js/admin/settings',
+		}
+	}
 ];

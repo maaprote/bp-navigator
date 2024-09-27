@@ -28,6 +28,9 @@ define( 'BP_NAVIGATOR_PATH', plugin_dir_path( __FILE__ ) );
 use Be_Productive\Views\Navigator;
 use Be_Productive\Utils\Utils;
 use Be_Productive\Rest\NavMenu as RestNavMenu;
+use Be_Productive\Rest\Products as RestProducts;
+use Be_Productive\Admin\Assets as AdminAssets;
+use Be_Productive\Admin\SettingsPage;
 
 class BP_Navigator {
 
@@ -41,8 +44,13 @@ class BP_Navigator {
         // Textdomain.
         add_action( 'init', array( $this, 'load_textdomain' ) );
 
+        // Admin.
+        new AdminAssets();
+        new SettingsPage();
+
         // Rest.
         new RestNavMenu();
+        new RestProducts();
 
         // Render the Navigator.
         new Navigator();

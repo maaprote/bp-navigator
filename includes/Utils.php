@@ -319,13 +319,33 @@ class Utils {
             );
 
             $shortcuts[] = array(
+                'label' => __( 'Admin: WooCommerce → Edit product category', 'bp-navigator' ),
+                'value' => 'edit:product-category',
+            );
+
+            $shortcuts[] = array(
                 'label' => __( 'Admin: WooCommerce → Product tags', 'bp-navigator' ),
                 'value' => add_query_arg( array( 'post_type' => 'product', 'taxonomy' => 'product_tag' ), admin_url( 'edit-tags.php' ) ),
             );
 
             $shortcuts[] = array(
+                'label' => __( 'Admin: WooCommerce → Edit product tag', 'bp-navigator' ),
+                'value' => 'edit:product-tag',
+            );
+
+            $shortcuts[] = array(
                 'label' => __( 'Admin: WooCommerce → Product attributes', 'bp-navigator' ),
                 'value' => add_query_arg( array( 'post_type' => 'product', 'page' => 'product_attributes' ), admin_url( 'edit.php' ) ),
+            );
+
+            $shortcuts[] = array(
+                'label' => __( 'Admin: WooCommerce → Edit product attribute', 'bp-navigator' ),
+                'value' => 'edit:product-attribute',
+            );
+
+            $shortcuts[] = array(
+                'label' => __( 'Admin: WooCommerce → Add product attribute term', 'bp-navigator' ),
+                'value' => 'add:product-attribute-term',
             );
 
             $shortcuts[] = array(
